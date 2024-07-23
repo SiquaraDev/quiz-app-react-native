@@ -13,6 +13,12 @@ export default function useQuiz() {
         return shuffledQuestions;
     }
 
+    function nextQuestion() {
+        setTimeout(() => {
+            setIndexQuestion(indexQuestion + 1);
+        }, 1000);
+    }
+
     return {
         get question() {
             return questions[indexQuestion];
@@ -31,7 +37,7 @@ export default function useQuiz() {
         },
         answer(answer: number) {
             setAnswers([...answers, answer]);
-            setIndexQuestion(indexQuestion + 1);
+            nextQuestion();
         },
         reset() {
             setIndexQuestion(0);
